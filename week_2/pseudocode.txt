@@ -1,5 +1,3 @@
-start program
-
 ask if user likes puns
 if yes:
     ask if they like computers
