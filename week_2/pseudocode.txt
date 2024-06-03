@@ -1,0 +1,14 @@
+start program
+
+ask if user likes puns
+if yes:
+    ask if they like computers
+    vs books?
+    if yes:
+        print "you'll be glad to
+        see this pun"
+    else:
+        print "I hope the police
+        book you"
+else:
+    print "thats punfortunate"
