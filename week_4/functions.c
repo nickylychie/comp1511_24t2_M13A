@@ -3,18 +3,14 @@
 
 #include <stdio.h>
 
-// TODO: Function protoype
-
 int main() {
     int result;
     int num1 = 5;
     int num2 = 3;
 
-    // TODO: Function call 
+    // TODO: Add 2 integers together
 
     printf("Result: %d\n", result);
     return 0;
 }
-
-// TODO: Function definition
 
