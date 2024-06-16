@@ -1,6 +1,7 @@
 // Nicole, 24T2 Week 4
-// This program adds 1 to any odd element in an array and after prints 
-// all elements in the array
+// This program needs to be debugged.
+// It adds 1 to any odd element in an array, and then prints out all elements 
+// in the array
 
 #include <stdio.h>
 
