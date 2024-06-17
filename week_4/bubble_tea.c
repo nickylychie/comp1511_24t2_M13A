@@ -53,7 +53,8 @@ int main(void) {
     inventory.tea = BASE_TEA;
     inventory.toppings = BASE_TOPPINGS;
 
-    // Take the user's bubble tea order
+    // Step 1: Scan in the user's bubble tea order 
+    // Start -----------------------------------------------------------------
     struct bubble_tea order;
     int type;
 
@@ -88,16 +89,23 @@ int main(void) {
 
     printf("Enter size (L for Large, R for Regular): ");
     scanf(" %c", &order.size);
+    // End -------------------------------------------------------------------
 
-    // Check available stock and end the program if insufficient stock
+
+    // Step 2: Check available stock and end the program if 
+    // insufficient stock
+    // Start -----------------------------------------------------------------
     if (inventory.tea - 1 <= 0 ||
         inventory.toppings - order.topping_qty <= 0) {
         printf("Sorry, we cannot fulfill your bubble tea order due to "
                 "insufficient stock.\n");
         return 1; 
-    }
+    }    
+    // End -------------------------------------------------------------------
 
-    // Calculate the cost
+
+    // Step 3: Calculate the cost
+    // Start -----------------------------------------------------------------
     double total_cost = BASE_COST;
 
     if (order.size == LARGE) {
@@ -115,28 +123,36 @@ int main(void) {
         total_cost += ADDED_COST;
         count++;
     }
+    // End -------------------------------------------------------------------
 
-    // Print the final order and cost
+
+    // Step 4: Print the final order and cost
+    // Start -----------------------------------------------------------------
     printf("Order:\n");
     printf("Type: %d\n", order.type);
     printf("Topping Qty: %d\n", order.topping_qty);
     printf("Size: %c\n", order.size);
     printf("Total Cost: %.2lf\n", total_cost);
 
-    // Update the stock after fulfilling the order
+
+    // Step 5: Update the stock after fulfilling the order
+    // Start -----------------------------------------------------------------
     if (order.size == LARGE) {
         inventory.tea -= 2;
     } else {
         inventory.tea -= 1;
     }
-            
+
     inventory.toppings -= order.topping_qty;
+    // End -------------------------------------------------------------------
+
 
     // Step 6: print the remining inventory
+    // Start -----------------------------------------------------------------
     printf("The current inventory is: ");
     printf("Bubble tea(s): %d\n", inventory.tea);
     printf("Topping(s): %d\n", inventory.toppings);
-
+    // End -------------------------------------------------------------------
 
     return 0;
 }
