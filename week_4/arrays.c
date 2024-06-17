@@ -9,18 +9,24 @@
 
 int main(void) {
 
-    int array = [1, 2, 3, 4, 5];
+    int array[SIZE] = {1, 2, 3, 4, 5};
 
+    // add 1 to all odd elements
     int i = 0;
     while (i < SIZE) {
-        if (array.i / 2 == 0) {
-            array.i += 1;
+        // printf("i is %d\n", i);
+        if (array[i] % 2 != 0) {
+            array[i] += 1;
         }
+        i++;
     }
 
-    int j = 1;
+    // prints out all elements of the array
+    int j = 0;
     while (j < SIZE) {
-        printf("%c ", array.j);
+        // printf("j is %d\n", j);
+        printf("%d", array[j]);
+        j++;
     }
 
     printf("\n");
