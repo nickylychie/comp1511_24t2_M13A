@@ -5,10 +5,9 @@
 int main(void) {
 
     int letter;
-    int hello;
 
-    while (scanf("%d %d", &letter, &hello) == 2) {
-        printf("scanned in %d and %d\n", letter, hello);
+    while (scanf("%d", &letter) == 1) {
+        printf("scanned in %d\n", letter);
     }
 
     return 0;
