@@ -14,7 +14,7 @@ enum entity {
     SPACESHIP,
     EMPTY,
 };
-
+ 
 struct celestial_body {
     enum entity entity;
     int points;
@@ -26,29 +26,71 @@ int main(void) {
     struct celestial_body galaxy[SIZE][SIZE];
 
     // TODO: Initialize the galaxy 
-    // by setting everything in the galaxy 2D array to empty
+    init_galaxy(galaxy);
 
-
-    // TODO: Place the planets and nebulae in the galaxy 2D array
+    // TODO: Place the planets and nebulae in the galaxy 
+    // 2D array
     // by taking input until 'q' is pressed.
     // Planets are added with: p [row] [col] [points]
     // Nebulae are added with: n [row] [col]
     printf("Enter planets and nebulae: ");
+    char cmd;
+    scanf(" %c", &cmd);
+    while (cmd != 'q') {
+        if (cmd == 'p') {
+            int points;
+            scanf("%d %d %d", &row, &col, &points);
+            galaxy[row][col].entity = PLANET;
+            galaxy[row][col].points = points;
+        } else if (cmd = 'n') {
+            scanf("%d %d", &row, &col);
+            galaxy[row][col].entity = NEBULA;
+            galaxy[row][col].points = NEBULA_POINTS;
+        }
+        scanf(" %c", &cmd);
+    }
 
     // TODO: Place the player in the galaxy
-    // by scanning in the player position in the form: [row] [col]
-    // If the given starting position is already occupied by a
-    // celestial body: print "Invalid starting position!\n", followed
-    // by "Re-enter starting position", and scan in starting positions
-    // until a valid one is scanned in.
+    // by scanning in the player position in the 
+    // form: [row] [col]
+    // If the given starting position is already occupied by 
+    // a celestial body: 
+    //      print "Invalid starting position!\n", 
+    // followed by "Re-enter starting position", 
+    // and continue scanning in starting positions until 
+    // a valid one is scanned in.
     printf("Enter the starting position of the player: ");
+    scanf("%d %d", &row, &col);
+    while (galaxy[row][col] != EMPTY) {
+        printf("Invalid starting position!\n");
+        printf("Re-enter starting position: ");
+        scanf("%d %d", &row, &col);
+    }
+    
     
     // TODO: Place the stars in the galaxy
     // by taking input until ctrl-d is pressed.
     // Stars are added with: [row] [col] [points]
     printf("Enter the position and points of the star(s):\n")
+    int points;
+    while (scanf("%d %d %d", &row, &col, &points) == 3) {
+        galaxy[row][col].entity = STAR;
+    }
 
     // TODO: Print the map
+    print_map(galaxy);
+}
+
+void init_galaxy(struct celestial_body galaxy[SIZE][SIZE]) {
+    int row = 0;
+    while (row < SIZE) {
+        int col = 0;
+        while (col < SIZE) {
+            galaxy[row][col].entity = EMPTY;
+            col++;
+        }
+        row++;
+    }
 }
 
 // Function prints the map of the galaxy
