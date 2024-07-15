@@ -57,8 +57,11 @@ int main(void) {
 // Returns:
 //      A pointer to the new node
 struct node *create_node(int data) {
-    // TODO
-    exit(1);
+    struct node *new_node = malloc(sizeof(struct node));
+    node_node->data = data;
+    new_node->next = NULL;
+
+    return new_node;
 }
 
 // Inserts a new node at the head of a linked list
@@ -70,8 +73,14 @@ struct node *create_node(int data) {
 // Returns:
 //      A pointer to the new head of the linked list
 struct node *insert_head(struct node *head, int data) {
-    // TODO
-    exit(1);
+    // create a node
+    struct node *new_node = create_node(data);
+
+    // insert node at the head
+    new_node->next = head;
+    head = new_node;
+    
+    return head;
 }
 
 // Inserts a new node at the tail of a linked list
@@ -83,8 +92,22 @@ struct node *insert_head(struct node *head, int data) {
 // Returns:
 //      A pointer to the head of the linked list
 struct node *insert_tail(struct node *head, int data) {
-    // TODO
-    exit(1);
+    // create a node
+    struct node *new_node = create_node(data);
+
+    // find tail of the list
+    // if the list is empty
+    if (head == NULL) {
+        head = new_node
+    } else {
+        struct node *current = head;
+        while (current->next != NULL) {
+            current = current->next;
+        }
+        current->next = new_node;
+    }
+
+    return head;
 }
 
 // Traverses a linked list and prints the data in each node
