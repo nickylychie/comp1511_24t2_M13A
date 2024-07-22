@@ -173,11 +173,36 @@ int list_length(struct node *head) {
 }
 
 struct node *remove_head(struct node *head) {
-    // TODO: implement function
-    return NULL;
+    
+    if (head == NULL) {
+        return head;
+    }
+
+    struct node *to_free = head;
+    head = head->next;
+    free(to_free);
+
+    return head;
 }
 
 struct node *remove_tail(struct node *head) {
-    // TODO: implement function
-    return NULL;
+    
+    if (head == NULL) {
+        return head;
+    } else if (head->next == NULL) {
+        struct node *to_free = head->next;
+        head = NULL;
+        free(to_free);
+        return head;
+    }
+    struct node *current = head;
+    while (current->next->next != NULL) {
+        current = current->next;
+    }
+    
+    struct node *to_free = current->next;
+    current->next = current->next->next;
+    free(to_free);
+
+    return head;
 }
